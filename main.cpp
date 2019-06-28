@@ -40,7 +40,7 @@ int matriz[200][97];
 vector<string> alfabeto, entrada, auxV;
 vector<Tokens> tokens;
 vector<string> errores;
-string salida = "", texto = "entero jonas = 100;", aux = "";
+string salida = "", texto = "entero jonas = 100; $\njonas = 200; $", aux = "";
 int cont, linea = 0;
 bool bloque = false, si = false;
 
@@ -72,17 +72,19 @@ int esFinal(int finales[]) {
     return salir;
 }
 
-int encontrarIndex(string aux) {
-    for (int i = 0; i < alfabeto.size(); i++)
-        if (boost::iequals(alfabeto[i], aux))
+int encontrarIndex(char aux) {
+    for (int i = 0; i < alfabeto.size(); i++) {
+        if (alfabeto[i][0] == aux) {
             return i;
+        }
+    }
     return -1;
 }
 
 void analisisLexico(int finales[]) {
     string palabra = "", palabraAnt = "", erroresS = "";
     int index;
-    bool usar = false;
+    bool variable = false;
     int estado;
     vector<string> entrada;
     boost::split(entrada, texto, boost::is_any_of("\n"));
@@ -93,17 +95,37 @@ void analisisLexico(int finales[]) {
             estado = esFinal(finales);
             if (estado != -1) {
                 if (estado == 1) {
-                    //Aqui se agregan los tokens nomas que hay errores
-
+                    variable = true;
+                    Tokens token;
+                    boost::replace_all(palabraAnt, " ", "");
+                    token.setToken(palabraAnt);
+                    if (q == 199) {
+                        for (int a = 0; a < tokens.size(); a++) {
+                            if (boost::iequals(tokens[a].getToken(), palabraAnt)) {
+                                token.setId(tokens[a].getId());
+                                variable = false;
+                            }
+                        }
+                        if (variable) {
+                            token.setId(id);
+                            id++;
+                        }
+                    } else
+                        token.setId(q);
+                    tokens.push_back(token);
+                    q = q0;
+                    palabra = "";
+                    palabraAnt = "";
+                    j--;
                 } else {
                     if (j < texto.length()) {
-                        index = encontrarIndex("" + texto.at(j));
+                        index = encontrarIndex(texto[j]);
                         if (index != -1) {
                             palabraAnt = palabra;
                             palabra += texto.at(j);
                             q = matriz[q][index];
                         } else {
-                            erroresS = "Error léxico en la linea: " + (i + 1);
+                            erroresS = "Error lexico en la linea: " + to_string((i + 1)) + ":" + to_string(j);
                             errores.push_back(erroresS + "\n");
                             error++;
                             palabra = "";
@@ -112,7 +134,7 @@ void analisisLexico(int finales[]) {
                     }
                 }
             } else {
-                erroresS = "Error léxico en la linea: " + (i + 1);
+                erroresS = "Error lexico en la linea: " + to_string((i + 1)) + ":" + to_string(j);
                 errores.push_back(erroresS + "\n");
                 error++;
                 palabra = "";
@@ -121,6 +143,7 @@ void analisisLexico(int finales[]) {
         }
     }
 }
+
 int main() {
     aux = leer(0);
     boost::split(alfabeto, aux, boost::is_any_of("@"));
@@ -129,6 +152,7 @@ int main() {
     aux = leer(3);
     boost::split(auxV, aux, boost::is_any_of(","));
     int finales[auxV.size()];
+    cantf = auxV.size();
     for (int i = 0; i < auxV.size(); i++)
         finales[i] = stoi(auxV[i]);
     aux = leer(2);
@@ -143,6 +167,20 @@ int main() {
         }
     }
     analisisLexico(finales);
+
+    cout << "ID  |  Token" << endl;
+    cout << "------------" << endl;
+    for (int i = 0; i < tokens.size(); i++) {
+        cout << tokens[i].getId();
+        cout << " | ";
+        cout << tokens[i].getToken() << endl;
+    }
+    if (errores.size() > 0) {
+        for (int i = 0; i < errores.size(); i++) {
+            cout << errores[i];
+        }
+    } else
+        cout << "El codigo no tiene errores lexicos\n";
     return 0;
 }
 
