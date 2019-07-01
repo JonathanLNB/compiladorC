@@ -40,7 +40,7 @@ int matriz[200][97];
 vector<string> alfabeto, entrada, auxV;
 vector<Tokens> tokens;
 vector<string> errores;
-string salida = "", texto = "entero jonas = 100; $\njonas = 200; $", aux = "";
+string salida = "", texto = "entero jonas = \"100 y 2000\";\njonas = 200;", aux = "";
 int cont, linea = 0;
 bool bloque = false, si = false;
 
@@ -72,6 +72,91 @@ int esFinal(int finales[]) {
     return salir;
 }
 
+bool esTipoDato(int ID) {
+    for (int i = 0; i <= 3; i++) {
+        if (tiposDato[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esValor(int ID) {
+    for (int i = 0; i <= 2; i++) {
+        if (valores[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esTipoRetorno(int ID) {
+    for (int i = 0; i <= 4; i++) {
+        if (tipoRetorno[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esTipoEncapsulamiento(int ID) {
+    for (int i = 0; i <= 2; i++) {
+        if (tiposEncapsulamiento[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esComparativo(int ID) {
+    for (int i = 0; i <= 5; i++) {
+        if (comparativos[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esAritmetico(int ID) {
+    for (int i = 0; i <= 6; i++) {
+        if (aritmeticos[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esIgualacion(int ID) {
+    for (int i = 0; i <= 2; i++) {
+        if (igualacion[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+bool esLogico(int ID) {
+    for (int i = 0; i <= 1; i++) {
+        if (logicos[i] == ID)
+            return true;
+    }
+    return false;
+}
+
+string encontrarToken(int ID) {
+    if (esTipoDato(ID))
+        return "Tipo de dato";
+    else if (esValor(ID))
+        return "Valor (numerico o cadena)";
+    else if (esTipoEncapsulamiento(ID))
+        return "Metodo de encapsulamiento";
+    else if (esTipoRetorno(ID))
+        return "Tipo de retorno";
+    else if (esLogico(ID))
+        return "Operador Logico";
+    else if (esAritmetico(ID))
+        return "Operador Aritmetico";
+    else if (esComparativo(ID))
+        return "Operador Comparativo";
+    else if (esIgualacion(ID))
+        return "Operador de Comparativo";
+    else
+        return "Variable";
+}
+
 int encontrarIndex(char aux) {
     for (int i = 0; i < alfabeto.size(); i++) {
         if (alfabeto[i][0] == aux) {
@@ -94,11 +179,15 @@ void analisisLexico(int finales[]) {
         for (int j = 0; j <= texto.length(); j++) {
             estado = esFinal(finales);
             if (estado != -1) {
-                if (estado == 1) {
+                if (estado == 1 && q != 134) {
                     variable = true;
                     Tokens token;
                     boost::replace_all(palabraAnt, " ", "");
-                    token.setToken(palabraAnt);
+                    boost::replace_all(palabraAnt, ";", "");
+                    if (q == 182)
+                        token.setToken(palabra);
+                    else
+                        token.setToken(palabraAnt);
                     if (q == 199) {
                         for (int a = 0; a < tokens.size(); a++) {
                             if (boost::iequals(tokens[a].getToken(), palabraAnt)) {
@@ -121,6 +210,7 @@ void analisisLexico(int finales[]) {
                     if (j < texto.length()) {
                         index = encontrarIndex(texto[j]);
                         if (index != -1) {
+
                             palabraAnt = palabra;
                             palabra += texto.at(j);
                             q = matriz[q][index];
@@ -168,12 +258,14 @@ int main() {
     }
     analisisLexico(finales);
 
-    cout << "ID  |  Token" << endl;
-    cout << "------------" << endl;
+    cout << "ID  |    Token    |  Tipo" << endl;
+    cout << "--------------------------" << endl;
     for (int i = 0; i < tokens.size(); i++) {
         cout << tokens[i].getId();
         cout << " | ";
-        cout << tokens[i].getToken() << endl;
+        cout << tokens[i].getToken();
+        cout << " | ";
+        cout << encontrarToken(tokens[i].getId()) << endl;
     }
     if (errores.size() > 0) {
         for (int i = 0; i < errores.size(); i++) {
