@@ -36,11 +36,13 @@ int comparativos[] = {143, 144, 145, 146, 177, 178};
 int aritmeticos[] = {135, 136, 169, 170, 171, 172, 173};
 int igualacion[] = {175, 137, 138};
 int logicos[] = {147, 148};
+int agrupacion[] = {125, 126, 127, 128, 129, 130};
 int matriz[200][97];
 vector<string> alfabeto, entrada, auxV;
 vector<Tokens> tokens;
 vector<string> errores;
-string salida = "", texto = "entero jonas = \"100 y 2000\";\njonas = 200;", aux = "";
+string salida = "", texto = "", aux = "";
+char ultimoC;
 int cont, linea = 0;
 bool bloque = false, si = false;
 
@@ -58,6 +60,18 @@ string leer(int linea) {
         }
         acceso.close();
     } else cout << "Error al abrir";
+}
+
+string leerCodigo() {
+    string line = "", total = "";
+    ifstream acceso;
+    acceso.open("D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/Codigo.gsh");
+    if (acceso.is_open()) {
+        while (getline(acceso, line))
+            total += line + "\n";
+        acceso.close();
+        return total;
+    } else cout << "Error al abrir";;
 }
 
 int esFinal(int finales[]) {
@@ -136,6 +150,14 @@ bool esLogico(int ID) {
     return false;
 }
 
+bool esAgrupacion(int ID) {
+    for (int i = 0; i <= 5; i++) {
+        if (agrupacion[i] == ID)
+            return true;
+    }
+    return false;
+}
+
 string encontrarToken(int ID) {
     if (esTipoDato(ID))
         return "Tipo de dato";
@@ -152,9 +174,15 @@ string encontrarToken(int ID) {
     else if (esComparativo(ID))
         return "Operador Comparativo";
     else if (esIgualacion(ID))
-        return "Operador de Comparativo";
-    else
+        return "Operador de Asignacion";
+    else if (esAgrupacion(ID))
+        return "Operador de agrupacion";
+    else if (ID >= 500)
         return "Variable";
+    else if (ID == 134)
+        return "Delimitador";
+    else
+        return "Palabra reservada";
 }
 
 int encontrarIndex(char aux) {
@@ -172,6 +200,7 @@ void analisisLexico(int finales[]) {
     bool variable = false;
     int estado;
     vector<string> entrada;
+    cout << texto << endl;
     boost::split(entrada, texto, boost::is_any_of("\n"));
     for (int i = 0; i < entrada.size(); i++) {
         q = q0;
@@ -186,7 +215,11 @@ void analisisLexico(int finales[]) {
                     boost::replace_all(palabraAnt, ";", "");
                     if (q == 182)
                         token.setToken(palabra);
-                    else
+                    else if (esAgrupacion(q)) {
+                        boost::replace_all(palabra, " ", "");
+                        boost::replace_all(palabra, ";", "");
+                        token.setToken(palabra);
+                    } else
                         token.setToken(palabraAnt);
                     if (q == 199) {
                         for (int a = 0; a < tokens.size(); a++) {
@@ -202,24 +235,37 @@ void analisisLexico(int finales[]) {
                     } else
                         token.setId(q);
                     tokens.push_back(token);
+                    if (ultimoC == ';') {
+                        Tokens token;
+                        token.setId(134);
+                        token.setToken(";");
+                        tokens.push_back(token);
+                    }
                     q = q0;
                     palabra = "";
                     palabraAnt = "";
                     j--;
                 } else {
-                    if (j < texto.length()) {
-                        index = encontrarIndex(texto[j]);
-                        if (index != -1) {
-
-                            palabraAnt = palabra;
-                            palabra += texto.at(j);
-                            q = matriz[q][index];
-                        } else {
-                            erroresS = "Error lexico en la linea: " + to_string((i + 1)) + ":" + to_string(j);
-                            errores.push_back(erroresS + "\n");
-                            error++;
-                            palabra = "";
-                            break;
+                    if (q == 134) {
+                        Tokens token;
+                        token.setId(134);
+                        token.setToken(";");
+                        tokens.push_back(token);
+                    } else {
+                        if (j < texto.length()) {
+                            index = encontrarIndex(texto[j]);
+                            if (index != -1) {
+                                palabraAnt = palabra;
+                                ultimoC = texto.at(j);
+                                palabra += ultimoC;
+                                q = matriz[q][index];
+                            } else {
+                                erroresS = "Error lexico en la linea: " + to_string((i + 1)) + ":" + to_string(j);
+                                errores.push_back(erroresS + "\n");
+                                error++;
+                                palabra = "";
+                                break;
+                            }
                         }
                     }
                 }
@@ -256,6 +302,8 @@ int main() {
             matriz[i][j] = stoi(auxV[j]);
         }
     }
+    texto = leerCodigo();
+    //texto = "entero jonas = \"100 y 2000\";\njonas = 200; $\n$";
     analisisLexico(finales);
 
     cout << "ID  |    Token    |  Tipo" << endl;
