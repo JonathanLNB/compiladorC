@@ -1,8 +1,6 @@
-entero valor = "100 y 2000";
-valor = 200;
+entero valor = 100;
+valor = 200 + valor;
 si ( valor < 300 ) {
-for ( entero i = 100; i < valor; i ++){
-while ( valor < 200 ){
-}
-}
+      entrada ( valor , valor , valor );
+      salida ( "hola" + valor );
 }

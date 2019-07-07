@@ -41,11 +41,10 @@ int matriz[200][97];
 vector<string> alfabeto, entrada, auxV;
 vector<Tokens> tokens;
 vector<string> errores;
-string salida = "", texto = "", aux = "";
+string salida = "", texto = "", aux = "", erroresS = "";
 char ultimoC;
-int cont, linea = 0;
-bool bloque = false, si = false;
-
+int cont = 0, linea = 0;
+bool bloquebool = false, sibool = false;
 
 string leer(int linea) {
     int count = 0;
@@ -219,7 +218,9 @@ void analisisLexico(int finales[]) {
                         boost::replace_all(palabra, " ", "");
                         boost::replace_all(palabra, ";", "");
                         token.setToken(palabra);
-                    } else
+                    } else if (q == 131)
+                        token.setToken(palabra);
+                    else
                         token.setToken(palabraAnt);
                     if (q == 199) {
                         for (int a = 0; a < tokens.size(); a++) {
@@ -280,6 +281,619 @@ void analisisLexico(int finales[]) {
     }
 }
 
+
+bool incrementar() {
+    if (cont < tokens.size() - 1) {
+        cont++;
+        return true;
+    }
+    return false;
+}
+
+void declaracion();
+
+void si();
+
+void mandarSalida();
+
+void operacion();
+
+void analisisSintactico();
+
+bool consultarFin();
+
+void lectura();
+
+void analisisDelBloque() {
+    linea++;
+    if (esTipoDato(tokens[cont].getId())) {
+        declaracion();
+    }
+    if (tokens[cont].getId() == 164) {
+        sibool = true;
+        si();
+    }
+    if (tokens[cont].getId() == 163) {
+        mandarSalida();
+    }
+
+    if (tokens[cont].getId() == 156) {
+        lectura();
+    }
+    if (tokens[cont].getId() >= 500) {
+        operacion();
+    }
+    if (tokens[cont].getId() == 128) {
+        bloquebool = false;
+        analisisSintactico();
+    }
+}
+
+void lectura() {
+    if (incrementar()) {
+        if (tokens[cont].getId() == 125) {
+            do {
+                if (incrementar()) {
+                    if (tokens[cont].getId() >= 500) {
+                        if (!incrementar()) {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                    return;
+                }
+            } while (tokens[cont].getId() == 131);
+            if (tokens[cont].getId() == 130) {
+                if (incrementar()) {
+                    if (tokens[cont].getId() == 134) {
+                        if (!incrementar()) {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                    return;
+                }
+            } else {
+                errorS++;
+                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                errores.push_back(erroresS + "\n");
+                return;
+            }
+        } else {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
+    } else {
+        errorS++;
+        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+        errores.push_back(erroresS + "\n");
+        return;
+    }
+}
+
+void analisisDelSi() {
+    linea++;
+    if (esTipoDato(tokens[cont].getId())) {
+        declaracion();
+    }
+    if (tokens[cont].getId() == 156) {
+        lectura();
+    }
+    if (tokens[cont].getId() == 163) {
+        mandarSalida();
+    }
+    if (tokens[cont].getId() >= 500) {
+        operacion();
+    }
+    if (tokens[cont].getId() == 128) {
+        sibool = false;
+        if (incrementar()) {
+            if (bloquebool)
+                analisisDelBloque();
+            else
+                analisisSintactico();
+        }
+    } else {
+        linea++;
+        if (sibool) {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
+    }
+
+}
+
+void declaracion() {
+    if (incrementar()) {
+        if (tokens[cont].getId() >= 500) {
+            if (incrementar()) {
+                if (tokens[cont].getId() == 175) {
+                    if (incrementar()) {
+                        if (esValor(tokens[cont].getId())) {
+                            if (incrementar()) {
+                                if (tokens[cont].getId() == 134) {
+                                    if (consultarFin()) return;
+                                } else {
+                                    errorS++;
+                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                    errores.push_back(erroresS + "\n");
+                                    return;
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        } else {
+                            if (tokens[cont].getId() >= 500) {
+                                for (int a = 0; a < tokens.size(); a++) {
+                                    if (tokens[a].getId() == tokens[cont].getId()) {
+                                        if (incrementar()) {
+                                            if (tokens[cont].getId() == 134) {
+                                                if (consultarFin()) return;
+                                            } else {
+                                                errorS++;
+                                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                errores.push_back(erroresS + "\n");
+                                                return;
+                                            }
+                                        } else {
+                                            errorS++;
+                                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                            errores.push_back(erroresS + "\n");
+                                            return;
+                                        }
+                                    }
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        }
+                    }
+                } else {
+                    if (tokens[cont].getId() == 131) {
+                        declaracion();
+                    }
+                    if (tokens[cont].getId() == 134 || tokens[cont].getId() == 128) {
+                        if (incrementar()) {
+                            if (bloquebool)
+                                if (sibool)
+                                    analisisDelSi();
+                                else
+                                    analisisDelBloque();
+                            else if (sibool)
+                                analisisDelSi();
+                            else
+                                analisisSintactico();
+                        }
+                        return;
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                }
+            } else {
+                errorS++;
+                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                errores.push_back(erroresS + "\n");
+            }
+        } else {
+            if (esTipoDato(tokens[cont].getId())) {
+                if (incrementar()) {
+                    if (tokens[cont].getId() == 175) {
+                        if (incrementar()) {
+                            if (esValor(tokens[cont].getId())) {
+                                if (consultarFin()) return;
+                            } else {
+                                for (int a = 0; a < tokens.size(); a++) {
+                                    if (tokens[a].getId() == tokens[cont].getId()) {
+                                        if (consultarFin()) return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if (tokens[cont].getId() == 131) {
+                            declaracion();
+                        }
+                        if (tokens[cont].getId() == 134 || tokens[cont].getId() == 128) {
+                            if (incrementar()) {
+                                if (bloquebool)
+                                    if (sibool)
+                                        analisisDelSi();
+                                    else
+                                        analisisDelBloque();
+                                else if (sibool)
+                                    analisisDelSi();
+                                else
+                                    analisisSintactico();
+                            }
+                            return;
+                        } else {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                }
+            } else {
+                errorS++;
+                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                errores.push_back(erroresS + "\n");
+            }
+        }
+    } else {
+        errorS++;
+        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+        errores.push_back(erroresS + "\n");
+    }
+}
+
+
+void bloque() {
+    if (incrementar()) {
+        if (esTipoRetorno(tokens[cont].getId())) {
+            if (incrementar()) {
+                if (tokens[cont].getId() >= 500) {
+                    if (incrementar()) {
+                        if (tokens[cont].getId() == 125) {
+                            do {
+                                if (incrementar()) {
+                                    if (esTipoDato(tokens[cont].getId())) {
+                                        if (incrementar()) {
+                                            if (tokens[cont].getId() < 500) {
+                                                errorS++;
+                                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                errores.push_back(erroresS + "\n");
+                                                return;
+                                            }
+                                            if (!incrementar()) {
+                                                errorS++;
+                                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                errores.push_back(erroresS + "\n");
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+                            } while (tokens[cont].getId() == 131);
+                            if (tokens[cont].getId() == 130) {
+                                if (incrementar()) {
+                                    if (tokens[cont].getId() == 127) {
+                                        if (incrementar()) {
+                                            analisisDelBloque();
+                                        }
+                                    } else {
+                                        errorS++;
+                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                        errores.push_back(erroresS + "\n");
+                                        return;
+                                    }
+                                } else {
+                                    errorS++;
+                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                    errores.push_back(erroresS + "\n");
+                                    return;
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void operacion() {
+    if (incrementar()) {
+        if (esIgualacion(tokens[cont].getId())) {
+            if (tokens[cont].getId() == 175) {
+                do {
+                    if (incrementar()) {
+                        if (tokens[cont].getId() >= 500 || esValor(tokens[cont].getId())) {
+                            if (incrementar()) {
+                                if (!esAritmetico(tokens[cont].getId())) {
+                                    if (tokens[cont].getId() == 134) {
+                                        if (incrementar())
+                                            analisisSintactico();
+                                        return;
+                                    } else {
+                                        errorS++;
+                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                        errores.push_back(erroresS + "\n");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        } else {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } while (tokens[cont].getId() != 134);
+            }
+            if (tokens[cont].getId() == 137 || tokens[cont].getId() == 138) {
+                if (incrementar()) {
+                    if (!(tokens[cont].getId() >= 500 || esValor(tokens[cont].getId()))) {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void mandarSalida() {
+    if (incrementar()) {
+        if (tokens[cont].getId() == 125) {
+            do {
+                if (incrementar()) {
+                    if (tokens[cont].getId() == 181 || tokens[cont].getId() == 182 || tokens[cont].getId() >= 500) {
+                        if (!incrementar()) {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                    return;
+                }
+            } while (tokens[cont].getId() == 169);
+            if (tokens[cont].getId() == 130) {
+                if (incrementar()) {
+                    if (tokens[cont].getId() == 134) {
+                        if (!incrementar()) {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                    return;
+                }
+            } else {
+                errorS++;
+                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                errores.push_back(erroresS + "\n");
+                return;
+            }
+        } else {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
+    } else {
+        errorS++;
+        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+        errores.push_back(erroresS + "\n");
+        return;
+    }
+}
+
+void si() {
+    if (incrementar()) {
+        if (tokens[cont].getId() == 125) {
+            do {
+                if (incrementar()) {
+                    if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
+                        if (incrementar()) {
+                            if (esComparativo(tokens[cont].getId())) {
+                                if (incrementar()) {
+                                    if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
+                                        if (!incrementar()) {
+                                            errorS++;
+                                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                            errores.push_back(erroresS + "\n");
+                                            return;
+                                        }
+                                    } else {
+                                        errorS++;
+                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                        errores.push_back(erroresS + "\n");
+                                        return;
+                                    }
+                                } else {
+                                    errorS++;
+                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                    errores.push_back(erroresS + "\n");
+                                    return;
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        } else {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                    return;
+                }
+            } while (esLogico(tokens[cont].getId()));
+            if (tokens[cont].getId() == 130) {
+                if (incrementar()) {
+                    if (tokens[cont].getId() == 127) {
+                        if (incrementar())
+                            analisisDelSi();
+                        else {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    errorS++;
+                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                    errores.push_back(erroresS + "\n");
+                    return;
+                }
+            } else {
+                errorS++;
+                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                errores.push_back(erroresS + "\n");
+                return;
+            }
+        } else {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
+    } else {
+        errorS++;
+        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+        errores.push_back(erroresS + "\n");
+        return;
+    }
+}
+
+void analisisSintactico() {
+    linea++;
+    if (esTipoEncapsulamiento(tokens[cont].getId())) {
+        bloquebool = true;
+        bloque();
+    }
+    if (esTipoDato(tokens[cont].getId())) {
+        declaracion();
+        linea++;
+    }
+    if (tokens[cont].getId() == 164) {
+        sibool = true;
+        si();
+    }
+    if (tokens[cont].getId() == 163) {
+        mandarSalida();
+    }
+
+    if (tokens[cont].getId() == 156) {
+        lectura();
+    }
+    if (tokens[cont].getId() >= 500) {
+        operacion();
+    }
+}
+
+bool consultarFin() {
+    if (incrementar()) {
+        if (tokens[cont].getId() == 131) {
+            declaracion();
+        }
+        if (tokens[cont].getId() == 134) {
+            if (incrementar()) {
+                if (bloquebool) {
+                    if (sibool)
+                        analisisDelSi();
+                    else
+                        analisisDelBloque();
+                } else {
+                    if (sibool)
+                        analisisDelSi();
+                    else
+                        analisisSintactico();
+                }
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
+
 int main() {
     aux = leer(0);
     boost::split(alfabeto, aux, boost::is_any_of("@"));
@@ -315,12 +929,13 @@ int main() {
         cout << " | ";
         cout << encontrarToken(tokens[i].getId()) << endl;
     }
+    analisisSintactico();
     if (errores.size() > 0) {
         for (int i = 0; i < errores.size(); i++) {
             cout << errores[i];
         }
     } else
-        cout << "El codigo no tiene errores lexicos\n";
+        cout << "El codigo no tiene errores lexicos, ni sintacticos\n";
     return 0;
 }
 
