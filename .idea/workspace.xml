@@ -44,6 +44,9 @@
     <list default="true" id="9f7f449c-cd4b-4902-9c90-487d6d664821" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codigo.gsh" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo.gsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compilador.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compilador.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -59,34 +62,38 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="337" column="29" selection-start-line="337" selection-start-column="29" selection-end-line="337" selection-end-column="29" />
+            <state relative-caret-position="344">
+              <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
               <folding>
-                <element signature="e#1035#1438#0" />
-                <element signature="e#1440#1801#0" />
-                <element signature="e#1803#2050#0" />
-                <element signature="e#2052#2195#0" />
-                <element signature="e#2197#2335#0" />
-                <element signature="e#2337#2485#0" />
-                <element signature="e#2654#2803#0" />
-                <element signature="e#2805#2952#0" />
-                <element signature="e#2954#3100#0" />
-                <element signature="e#3102#3241#0" />
-                <element signature="e#3243#3389#0" />
-                <element signature="e#3391#4194#0" />
-                <element signature="e#4196#4366#0" />
-                <element signature="e#13370#16374#0" />
+                <element signature="e#1078#1481#0" />
+                <element signature="e#1483#1844#0" />
+                <element signature="e#1846#2093#0" />
+                <element signature="e#2095#2238#0" />
+                <element signature="e#2380#2528#0" />
+                <element signature="e#2530#2695#0" />
+                <element signature="e#2697#2846#0" />
+                <element signature="e#2848#2995#0" />
+                <element signature="e#2997#3143#0" />
+                <element signature="e#3145#3284#0" />
+                <element signature="e#3286#3432#0" />
+                <element signature="e#3434#4237#0" />
+                <element signature="e#4239#4409#0" />
+                <element signature="e#4411#7937#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Codigo.gsh">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -123,10 +130,14 @@
       <find>analisisdelsi</find>
       <find>consultarFin</find>
       <find>analisisdel</find>
-      <find>declara</find>
       <find>163</find>
       <find>while</find>
       <find>mandar</find>
+      <find>declara</find>
+      <find>lexico</find>
+      <find>si</find>
+      <find>analisis</find>
+      <find>analisisDelSi</find>
     </findStrings>
     <replaceStrings>
       <replace>bloque()</replace>
@@ -140,8 +151,8 @@
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Reglas.txt" />
-        <option value="$PROJECT_DIR$/Codigo.gsh" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Codigo.gsh" />
       </list>
     </option>
   </component>
@@ -232,12 +243,16 @@
       <workItem from="1561966734596" duration="2606000" />
       <workItem from="1562016717407" duration="3940000" />
       <workItem from="1562190661043" duration="4342000" />
-      <workItem from="1562275881401" duration="11318000" />
+      <workItem from="1562275881401" duration="11729000" />
+      <workItem from="1562602998390" duration="762000" />
+      <workItem from="1562689766100" duration="2365000" />
+      <workItem from="1562776524337" duration="4307000" />
+      <workItem from="1563034761295" duration="950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46355000" />
+    <option name="totallyTimeSpent" value="55150000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -252,12 +267,12 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.30332828" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3161876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44444445" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44444445" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.63760686" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -308,28 +323,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>399</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>629</line>
+          <line>680</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>863</line>
-          <option name="timeStamp" value="15" />
+          <line>534</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>402</line>
-          <option name="timeStamp" value="16" />
+          <line>263</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>406</line>
-          <option name="timeStamp" value="18" />
+          <line>800</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>896</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -394,10 +409,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Reglas.txt">
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+        <state relative-caret-position="65">
+          <caret line="933" selection-start-line="933" selection-end-line="933" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
+          <folding>
+            <element signature="e#1078#1481#0" />
+            <element signature="e#1483#1844#0" />
+            <element signature="e#1846#2093#0" />
+            <element signature="e#2095#2238#0" />
+            <element signature="e#2380#2528#0" />
+            <element signature="e#2530#2695#0" />
+            <element signature="e#2697#2846#0" />
+            <element signature="e#2848#2995#0" />
+            <element signature="e#2997#3143#0" />
+            <element signature="e#3145#3284#0" />
+            <element signature="e#3286#3432#0" />
+            <element signature="e#3434#4237#0" />
+            <element signature="e#4239#4409#0" />
+            <element signature="e#4411#7937#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -408,36 +446,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/stl_vector.h">
+    <entry file="file://$PROJECT_DIR$/Reglas.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="805" selection-start-line="805" selection-end-line="805" />
+        <state relative-caret-position="192">
+          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Codigo.gsh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="337" column="29" selection-start-line="337" selection-start-column="29" selection-end-line="337" selection-end-column="29" />
-          <folding>
-            <element signature="e#1035#1438#0" />
-            <element signature="e#1440#1801#0" />
-            <element signature="e#1803#2050#0" />
-            <element signature="e#2052#2195#0" />
-            <element signature="e#2197#2335#0" />
-            <element signature="e#2337#2485#0" />
-            <element signature="e#2654#2803#0" />
-            <element signature="e#2805#2952#0" />
-            <element signature="e#2954#3100#0" />
-            <element signature="e#3102#3241#0" />
-            <element signature="e#3243#3389#0" />
-            <element signature="e#3391#4194#0" />
-            <element signature="e#4196#4366#0" />
-            <element signature="e#13370#16374#0" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>

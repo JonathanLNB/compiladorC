@@ -44,7 +44,7 @@ vector<string> errores;
 string salida = "", texto = "", aux = "", erroresS = "";
 char ultimoC;
 int cont = 0, linea = 0;
-bool bloquebool = false, sibool = false;
+bool bloquebool = false, sibool = false, forbool = false;
 
 string leer(int linea) {
     int count = 0;
@@ -294,6 +294,8 @@ void declaracion();
 
 void si();
 
+void para();
+
 void mandarSalida();
 
 void operacion();
@@ -325,7 +327,52 @@ void analisisDelBloque() {
     }
     if (tokens[cont].getId() == 128) {
         bloquebool = false;
-        analisisSintactico();
+        if (incrementar())
+            analisisSintactico();
+        else {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " +
+                       to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
+    }
+}
+
+void analisisDelFor() {
+    linea++;
+    if (esTipoDato(tokens[cont].getId())) {
+        declaracion();
+    }
+    if (tokens[cont].getId() == 164) {
+        sibool = true;
+        si();
+    }
+    if (tokens[cont].getId() == 157) {
+        forbool = true;
+        para();
+    }
+    if (tokens[cont].getId() == 163) {
+        mandarSalida();
+    }
+
+    if (tokens[cont].getId() == 156) {
+        lectura();
+    }
+    if (tokens[cont].getId() >= 500) {
+        operacion();
+    }
+    if (tokens[cont].getId() == 128) {
+        forbool = false;
+        if (incrementar())
+            analisisSintactico();
+        else {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " +
+                       to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
     }
 }
 
@@ -440,10 +487,14 @@ void declaracion() {
                                 if (tokens[cont].getId() == 134) {
                                     if (consultarFin()) return;
                                 } else {
-                                    errorS++;
-                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
-                                    errores.push_back(erroresS + "\n");
-                                    return;
+                                    if (tokens[cont].getId() == 131)
+                                        declaracion();
+                                    else {
+                                        errorS++;
+                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                        errores.push_back(erroresS + "\n");
+                                        return;
+                                    }
                                 }
                             } else {
                                 errorS++;
@@ -842,6 +893,423 @@ void si() {
     }
 }
 
+void para() {
+    if (incrementar()) {
+        if (tokens[cont].getId() == 125) {
+            if (incrementar()) {
+                if (tokens[cont].getId() >= 500) {
+                    if (incrementar()) {
+                        if (tokens[cont].getId() == 175) {
+                            if (incrementar()) {
+                                if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
+                                    if (incrementar()) {
+                                        if (tokens[cont].getId() == 131) {
+                                            do {
+                                                if (incrementar()) {
+                                                    if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
+                                                        if (incrementar()) {
+                                                            if (esComparativo(tokens[cont].getId())) {
+                                                                if (incrementar()) {
+                                                                    if (esValor(tokens[cont].getId()) ||
+                                                                        tokens[cont].getId() >= 500) {
+                                                                        if (!incrementar()) {
+                                                                            errorS++;
+                                                                            erroresS =
+                                                                                    "Error de sintaxis en la linea: " +
+                                                                                    to_string(linea);
+                                                                            errores.push_back(erroresS + "\n");
+                                                                            return;
+                                                                        }
+                                                                    } else {
+                                                                        errorS++;
+                                                                        erroresS = "Error de sintaxis en la linea: " +
+                                                                                   to_string(linea);
+                                                                        errores.push_back(erroresS + "\n");
+                                                                        return;
+                                                                    }
+                                                                } else {
+                                                                    errorS++;
+                                                                    erroresS = "Error de sintaxis en la linea: " +
+                                                                               to_string(linea);
+                                                                    errores.push_back(erroresS + "\n");
+                                                                    return;
+                                                                }
+                                                            } else {
+                                                                errorS++;
+                                                                erroresS = "Error de sintaxis en la linea: " +
+                                                                           to_string(linea);
+                                                                errores.push_back(erroresS + "\n");
+                                                                return;
+                                                            }
+                                                        } else {
+                                                            errorS++;
+                                                            erroresS = "Error de sintaxis en la linea: " +
+                                                                       to_string(linea);
+                                                            errores.push_back(erroresS + "\n");
+                                                            return;
+                                                        }
+                                                    } else {
+                                                        errorS++;
+                                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                        errores.push_back(erroresS + "\n");
+                                                        return;
+                                                    }
+                                                } else {
+                                                    errorS++;
+                                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                    errores.push_back(erroresS + "\n");
+                                                    return;
+                                                }
+                                            } while (esLogico(tokens[cont].getId()));
+                                            if (tokens[cont].getId() == 131) {
+                                                if (incrementar()) {
+                                                    if (tokens[cont].getId() >= 500) {
+                                                        if (incrementar()) {
+                                                            if (tokens[cont].getId() == 135) {
+                                                                if (incrementar()) {
+                                                                    if (tokens[cont].getId() == 130) {
+                                                                        if (incrementar()) {
+                                                                            if (tokens[cont].getId() == 127) {
+                                                                                if (incrementar())
+                                                                                    analisisDelFor();
+                                                                                else {
+                                                                                    errorS++;
+                                                                                    erroresS =
+                                                                                            "Error de sintaxis en la linea: " +
+                                                                                            to_string(linea);
+                                                                                    errores.push_back(erroresS + "\n");
+                                                                                    return;
+                                                                                }
+                                                                            } else {
+                                                                                errorS++;
+                                                                                erroresS =
+                                                                                        "Error de sintaxis en la linea: " +
+                                                                                        to_string(linea);
+                                                                                errores.push_back(erroresS + "\n");
+                                                                                return;
+                                                                            }
+                                                                        } else {
+                                                                            errorS++;
+                                                                            erroresS =
+                                                                                    "Error de sintaxis en la linea: " +
+                                                                                    to_string(linea);
+                                                                            errores.push_back(erroresS + "\n");
+                                                                            return;
+                                                                        }
+                                                                    } else {
+                                                                        errorS++;
+                                                                        erroresS = "Error de sintaxis en la linea: " +
+                                                                                   to_string(linea);
+                                                                        errores.push_back(erroresS + "\n");
+                                                                        return;
+                                                                    }
+                                                                } else {
+                                                                    errorS++;
+                                                                    erroresS = "Error de sintaxis en la linea: " +
+                                                                               to_string(linea);
+                                                                    errores.push_back(erroresS + "\n");
+                                                                    return;
+                                                                }
+                                                            } else {
+                                                                errorS++;
+                                                                erroresS = "Error de sintaxis en la linea: " +
+                                                                           to_string(linea);
+                                                                errores.push_back(erroresS + "\n");
+                                                                return;
+                                                            }
+                                                        } else {
+                                                            errorS++;
+                                                            erroresS = "Error de sintaxis en la linea: " +
+                                                                       to_string(linea);
+                                                            errores.push_back(erroresS + "\n");
+                                                            return;
+                                                        }
+                                                    } else {
+                                                        errorS++;
+                                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                        errores.push_back(erroresS + "\n");
+                                                        return;
+                                                    }
+                                                } else {
+                                                    errorS++;
+                                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                    errores.push_back(erroresS + "\n");
+                                                    return;
+                                                }
+                                            } else {
+                                                errorS++;
+                                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                errores.push_back(erroresS + "\n");
+                                                return;
+                                            }
+                                        } else {
+                                            errorS++;
+                                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                            errores.push_back(erroresS + "\n");
+                                            return;
+                                        }
+                                    } else
+                                        errorS++;
+                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                    errores.push_back(erroresS + "\n");
+                                    return;
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        } else {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                } else {
+                    if (esTipoDato(tokens[cont].getId())) {
+                        if (incrementar()) {
+                            if (tokens[cont].getId() >= 500) {
+                                if (incrementar()) {
+                                    if (tokens[cont].getId() == 175) {
+                                        if (incrementar()) {
+                                            if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
+                                                if (incrementar()) {
+                                                    if (tokens[cont].getId() == 131) {
+                                                        do {
+                                                            if (incrementar()) {
+                                                                if (esValor(tokens[cont].getId()) ||
+                                                                    tokens[cont].getId() >= 500) {
+                                                                    if (incrementar()) {
+                                                                        if (esComparativo(tokens[cont].getId())) {
+                                                                            if (incrementar()) {
+                                                                                if (esValor(tokens[cont].getId()) ||
+                                                                                    tokens[cont].getId() >= 500) {
+                                                                                    if (!incrementar()) {
+                                                                                        errorS++;
+                                                                                        erroresS =
+                                                                                                "Error de sintaxis en la linea: " +
+                                                                                                to_string(linea);
+                                                                                        errores.push_back(
+                                                                                                erroresS + "\n");
+                                                                                        return;
+                                                                                    }
+                                                                                } else {
+                                                                                    errorS++;
+                                                                                    erroresS =
+                                                                                            "Error de sintaxis en la linea: " +
+                                                                                            to_string(linea);
+                                                                                    errores.push_back(erroresS + "\n");
+                                                                                    return;
+                                                                                }
+                                                                            } else {
+                                                                                errorS++;
+                                                                                erroresS =
+                                                                                        "Error de sintaxis en la linea: " +
+                                                                                        to_string(linea);
+                                                                                errores.push_back(erroresS + "\n");
+                                                                                return;
+                                                                            }
+                                                                        } else {
+                                                                            errorS++;
+                                                                            erroresS =
+                                                                                    "Error de sintaxis en la linea: " +
+                                                                                    to_string(linea);
+                                                                            errores.push_back(erroresS + "\n");
+                                                                            return;
+                                                                        }
+                                                                    } else {
+                                                                        errorS++;
+                                                                        erroresS = "Error de sintaxis en la linea: " +
+                                                                                   to_string(linea);
+                                                                        errores.push_back(erroresS + "\n");
+                                                                        return;
+                                                                    }
+                                                                } else {
+                                                                    errorS++;
+                                                                    erroresS = "Error de sintaxis en la linea: " +
+                                                                               to_string(linea);
+                                                                    errores.push_back(erroresS + "\n");
+                                                                    return;
+                                                                }
+                                                            } else {
+                                                                errorS++;
+                                                                erroresS = "Error de sintaxis en la linea: " +
+                                                                           to_string(linea);
+                                                                errores.push_back(erroresS + "\n");
+                                                                return;
+                                                            }
+                                                        } while (esLogico(tokens[cont].getId()));
+                                                        if (tokens[cont].getId() == 131) {
+                                                            if (incrementar()) {
+                                                                if (tokens[cont].getId() >= 500) {
+                                                                    if (incrementar()) {
+                                                                        if (tokens[cont].getId() == 135) {
+                                                                            if (incrementar()) {
+                                                                                if (tokens[cont].getId() == 130) {
+                                                                                    if (incrementar()) {
+                                                                                        if (tokens[cont].getId() ==
+                                                                                            127) {
+                                                                                            if (incrementar())
+                                                                                                analisisDelFor();
+                                                                                            else {
+                                                                                                errorS++;
+                                                                                                erroresS =
+                                                                                                        "Error de sintaxis en la linea: " +
+                                                                                                        to_string(
+                                                                                                                linea);
+                                                                                                errores.push_back(
+                                                                                                        erroresS +
+                                                                                                        "\n");
+                                                                                                return;
+                                                                                            }
+                                                                                        } else {
+                                                                                            errorS++;
+                                                                                            erroresS =
+                                                                                                    "Error de sintaxis en la linea: " +
+                                                                                                    to_string(linea);
+                                                                                            errores.push_back(
+                                                                                                    erroresS + "\n");
+                                                                                            return;
+                                                                                        }
+                                                                                    } else {
+                                                                                        errorS++;
+                                                                                        erroresS =
+                                                                                                "Error de sintaxis en la linea: " +
+                                                                                                to_string(linea);
+                                                                                        errores.push_back(
+                                                                                                erroresS + "\n");
+                                                                                        return;
+                                                                                    }
+                                                                                } else {
+                                                                                    errorS++;
+                                                                                    erroresS =
+                                                                                            "Error de sintaxis en la linea: " +
+                                                                                            to_string(linea);
+                                                                                    errores.push_back(erroresS + "\n");
+                                                                                    return;
+                                                                                }
+                                                                            } else {
+                                                                                errorS++;
+                                                                                erroresS =
+                                                                                        "Error de sintaxis en la linea: " +
+                                                                                        to_string(linea);
+                                                                                errores.push_back(erroresS + "\n");
+                                                                                return;
+                                                                            }
+                                                                        } else {
+                                                                            errorS++;
+                                                                            erroresS =
+                                                                                    "Error de sintaxis en la linea: " +
+                                                                                    to_string(linea);
+                                                                            errores.push_back(erroresS + "\n");
+                                                                            return;
+                                                                        }
+                                                                    } else {
+                                                                        errorS++;
+                                                                        erroresS = "Error de sintaxis en la linea: " +
+                                                                                   to_string(linea);
+                                                                        errores.push_back(erroresS + "\n");
+                                                                        return;
+                                                                    }
+                                                                } else {
+                                                                    errorS++;
+                                                                    erroresS = "Error de sintaxis en la linea: " +
+                                                                               to_string(linea);
+                                                                    errores.push_back(erroresS + "\n");
+                                                                    return;
+                                                                }
+                                                            } else {
+                                                                errorS++;
+                                                                erroresS = "Error de sintaxis en la linea: " +
+                                                                           to_string(linea);
+                                                                errores.push_back(erroresS + "\n");
+                                                                return;
+                                                            }
+                                                        } else {
+                                                            errorS++;
+                                                            erroresS = "Error de sintaxis en la linea: " +
+                                                                       to_string(linea);
+                                                            errores.push_back(erroresS + "\n");
+                                                            return;
+                                                        }
+                                                    } else {
+                                                        errorS++;
+                                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                        errores.push_back(erroresS + "\n");
+                                                        return;
+                                                    }
+                                                } else {
+                                                    errorS++;
+                                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                    errores.push_back(erroresS + "\n");
+                                                    return;
+                                                }
+                                            }
+                                        } else {
+                                            errorS++;
+                                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                            errores.push_back(erroresS + "\n");
+                                            return;
+                                        }
+                                    } else {
+                                        errorS++;
+                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                        errores.push_back(erroresS + "\n");
+                                        return;
+                                    }
+                                } else {
+                                    errorS++;
+                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                    errores.push_back(erroresS + "\n");
+                                    return;
+                                }
+                            } else {
+                                errorS++;
+                                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                errores.push_back(erroresS + "\n");
+                                return;
+                            }
+                        } else {
+                            errorS++;
+                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                            errores.push_back(erroresS + "\n");
+                            return;
+                        }
+                    } else {
+                        errorS++;
+                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                        errores.push_back(erroresS + "\n");
+                        return;
+                    }
+                }
+            } else {
+                errorS++;
+                erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                errores.push_back(erroresS + "\n");
+                return;
+            }
+        } else {
+            errorS++;
+            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+            errores.push_back(erroresS + "\n");
+            return;
+        }
+
+    } else {
+        errorS++;
+        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+        errores.push_back(erroresS + "\n");
+        return;
+    }
+}
+
 void analisisSintactico() {
     linea++;
     if (esTipoEncapsulamiento(tokens[cont].getId())) {
@@ -852,6 +1320,10 @@ void analisisSintactico() {
         declaracion();
         linea++;
     }
+    if (tokens[cont].getId() == 157) {
+        forbool = true;
+        para();
+    }
     if (tokens[cont].getId() == 164) {
         sibool = true;
         si();
@@ -859,7 +1331,6 @@ void analisisSintactico() {
     if (tokens[cont].getId() == 163) {
         mandarSalida();
     }
-
     if (tokens[cont].getId() == 156) {
         lectura();
     }
