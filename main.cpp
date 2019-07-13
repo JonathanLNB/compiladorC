@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <boost/algorithm/string.hpp>
-
+#include "Token.h"
+#include "Semantico.h"
 using namespace std;
 
 class Tokens {
