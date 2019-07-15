@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Compilador.dir/main.cpp.obj"
+  "CMakeFiles/Compilador.dir/Semantico.cpp.obj"
+  "CMakeFiles/Compilador.dir/Token.cpp.obj"
   "Compilador.pdb"
   "Compilador.exe"
   "Compilador.exe.manifest"

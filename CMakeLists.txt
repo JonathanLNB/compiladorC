@@ -3,7 +3,7 @@ project(Compilador)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Compilador main.cpp)
+add_executable(Compilador main.cpp Semantico.cpp Semantico.h Token.cpp Token.h)
 
 
 SET (BOOST_ROOT "c:/mingw/include/boost")

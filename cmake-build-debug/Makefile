@@ -47,10 +47,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador"
+CMAKE_SOURCE_DIR = C:\Users\alan\CLionProjects\compiladorC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,60 @@ Compilador/fast:
 	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/build
 .PHONY : Compilador/fast
 
+Semantico.obj: Semantico.cpp.obj
+
+.PHONY : Semantico.obj
+
+# target to build an object file
+Semantico.cpp.obj:
+	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/Semantico.cpp.obj
+.PHONY : Semantico.cpp.obj
+
+Semantico.i: Semantico.cpp.i
+
+.PHONY : Semantico.i
+
+# target to preprocess a source file
+Semantico.cpp.i:
+	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/Semantico.cpp.i
+.PHONY : Semantico.cpp.i
+
+Semantico.s: Semantico.cpp.s
+
+.PHONY : Semantico.s
+
+# target to generate assembly for a file
+Semantico.cpp.s:
+	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/Semantico.cpp.s
+.PHONY : Semantico.cpp.s
+
+Token.obj: Token.cpp.obj
+
+.PHONY : Token.obj
+
+# target to build an object file
+Token.cpp.obj:
+	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/Token.cpp.obj
+.PHONY : Token.cpp.obj
+
+Token.i: Token.cpp.i
+
+.PHONY : Token.i
+
+# target to preprocess a source file
+Token.cpp.i:
+	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/Token.cpp.i
+.PHONY : Token.cpp.i
+
+Token.s: Token.cpp.s
+
+.PHONY : Token.s
+
+# target to generate assembly for a file
+Token.cpp.s:
+	$(MAKE) -f CMakeFiles\Compilador.dir\build.make CMakeFiles/Compilador.dir/Token.cpp.s
+.PHONY : Token.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +212,12 @@ help:
 	@echo ... Compilador
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Semantico.obj
+	@echo ... Semantico.i
+	@echo ... Semantico.s
+	@echo ... Token.obj
+	@echo ... Token.i
+	@echo ... Token.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
