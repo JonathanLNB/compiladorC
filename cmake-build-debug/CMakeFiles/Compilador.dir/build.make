@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\alan\CLionProjects\compiladorC
+CMAKE_SOURCE_DIR = "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug
+CMAKE_BINARY_DIR = "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Compilador.dir/depend.make
@@ -59,44 +59,44 @@ include CMakeFiles/Compilador.dir/flags.make
 CMakeFiles/Compilador.dir/main.cpp.obj: CMakeFiles/Compilador.dir/flags.make
 CMakeFiles/Compilador.dir/main.cpp.obj: CMakeFiles/Compilador.dir/includes_CXX.rsp
 CMakeFiles/Compilador.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Compilador.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Compilador.dir\main.cpp.obj -c C:\Users\alan\CLionProjects\compiladorC\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Compilador.dir/main.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Compilador.dir\main.cpp.obj -c "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\main.cpp"
 
 CMakeFiles/Compilador.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Compilador.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alan\CLionProjects\compiladorC\main.cpp > CMakeFiles\Compilador.dir\main.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\main.cpp" > CMakeFiles\Compilador.dir\main.cpp.i
 
 CMakeFiles/Compilador.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Compilador.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alan\CLionProjects\compiladorC\main.cpp -o CMakeFiles\Compilador.dir\main.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\main.cpp" -o CMakeFiles\Compilador.dir\main.cpp.s
 
 CMakeFiles/Compilador.dir/Semantico.cpp.obj: CMakeFiles/Compilador.dir/flags.make
 CMakeFiles/Compilador.dir/Semantico.cpp.obj: CMakeFiles/Compilador.dir/includes_CXX.rsp
 CMakeFiles/Compilador.dir/Semantico.cpp.obj: ../Semantico.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Compilador.dir/Semantico.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Compilador.dir\Semantico.cpp.obj -c C:\Users\alan\CLionProjects\compiladorC\Semantico.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Compilador.dir/Semantico.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Compilador.dir\Semantico.cpp.obj -c "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\Semantico.cpp"
 
 CMakeFiles/Compilador.dir/Semantico.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Compilador.dir/Semantico.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alan\CLionProjects\compiladorC\Semantico.cpp > CMakeFiles\Compilador.dir\Semantico.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\Semantico.cpp" > CMakeFiles\Compilador.dir\Semantico.cpp.i
 
 CMakeFiles/Compilador.dir/Semantico.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Compilador.dir/Semantico.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alan\CLionProjects\compiladorC\Semantico.cpp -o CMakeFiles\Compilador.dir\Semantico.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\Semantico.cpp" -o CMakeFiles\Compilador.dir\Semantico.cpp.s
 
 CMakeFiles/Compilador.dir/Token.cpp.obj: CMakeFiles/Compilador.dir/flags.make
 CMakeFiles/Compilador.dir/Token.cpp.obj: CMakeFiles/Compilador.dir/includes_CXX.rsp
 CMakeFiles/Compilador.dir/Token.cpp.obj: ../Token.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Compilador.dir/Token.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Compilador.dir\Token.cpp.obj -c C:\Users\alan\CLionProjects\compiladorC\Token.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Compilador.dir/Token.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Compilador.dir\Token.cpp.obj -c "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\Token.cpp"
 
 CMakeFiles/Compilador.dir/Token.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Compilador.dir/Token.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\alan\CLionProjects\compiladorC\Token.cpp > CMakeFiles\Compilador.dir\Token.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\Token.cpp" > CMakeFiles\Compilador.dir\Token.cpp.i
 
 CMakeFiles/Compilador.dir/Token.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Compilador.dir/Token.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\alan\CLionProjects\compiladorC\Token.cpp -o CMakeFiles\Compilador.dir\Token.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\Token.cpp" -o CMakeFiles\Compilador.dir\Token.cpp.s
 
 # Object files for target Compilador
 Compilador_OBJECTS = \
@@ -114,7 +114,7 @@ Compilador.exe: CMakeFiles/Compilador.dir/build.make
 Compilador.exe: CMakeFiles/Compilador.dir/linklibs.rsp
 Compilador.exe: CMakeFiles/Compilador.dir/objects1.rsp
 Compilador.exe: CMakeFiles/Compilador.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Compilador.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Compilador.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Compilador.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -127,6 +127,6 @@ CMakeFiles/Compilador.dir/clean:
 .PHONY : CMakeFiles/Compilador.dir/clean
 
 CMakeFiles/Compilador.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\alan\CLionProjects\compiladorC C:\Users\alan\CLionProjects\compiladorC C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug C:\Users\alan\CLionProjects\compiladorC\cmake-build-debug\CMakeFiles\Compilador.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador\cmake-build-debug\CMakeFiles\Compilador.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Compilador.dir/depend
 

@@ -1,8 +1,22 @@
-"C:\Program Files\JetBrains\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\alan\CLionProjects\compiladorC
+"C:\Program Files\JetBrains\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "D:\Documentos\Tecno\8vo Semestre\Lenguajes y automatas 2\Compilador"
+-- The C compiler identification is GNU 8.2.0
+-- The CXX compiler identification is GNU 8.2.0
+-- Check for working C compiler: C:/MinGW/bin/gcc.exe
+-- Check for working C compiler: C:/MinGW/bin/gcc.exe -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: C:/MinGW/bin/g++.exe
+-- Check for working CXX compiler: C:/MinGW/bin/g++.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 -- Boost version: 1.70.0
 -- Setting up BOOST
 --  Includes - C:/MinGW/include/boost
 --  Library  - 
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/alan/CLionProjects/compiladorC/cmake-build-debug
+-- Build files have been written to: D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/cmake-build-debug

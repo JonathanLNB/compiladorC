@@ -38,7 +38,7 @@ int aritmeticos[] = {135, 136, 169, 170, 171, 172, 173};
 int igualacion[] = {175, 137, 138};
 int logicos[] = {147, 148};
 int agrupacion[] = {125, 126, 127, 128, 129, 130};
-int matriz[200][97];
+int matriz[201][97];
 vector<string> alfabeto, entrada, auxV;
 vector<Tokens> tokens;
 vector<string> errores;

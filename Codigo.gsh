@@ -1,4 +1,5 @@
 entero valor = 100 , hola;
+decimal prro = 100.122;
 for ( entero i = 0 , i < 100 , i ++ ){
 
 }

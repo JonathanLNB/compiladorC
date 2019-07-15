@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/alan/CLionProjects/compiladorC
+# Install script for directory: D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/alan/CLionProjects/compiladorC/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

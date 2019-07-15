@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/alan/CLionProjects/compiladorC/Semantico.cpp" "C:/Users/alan/CLionProjects/compiladorC/cmake-build-debug/CMakeFiles/Compilador.dir/Semantico.cpp.obj"
-  "C:/Users/alan/CLionProjects/compiladorC/Token.cpp" "C:/Users/alan/CLionProjects/compiladorC/cmake-build-debug/CMakeFiles/Compilador.dir/Token.cpp.obj"
-  "C:/Users/alan/CLionProjects/compiladorC/main.cpp" "C:/Users/alan/CLionProjects/compiladorC/cmake-build-debug/CMakeFiles/Compilador.dir/main.cpp.obj"
+  "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/Semantico.cpp" "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/cmake-build-debug/CMakeFiles/Compilador.dir/Semantico.cpp.obj"
+  "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/Token.cpp" "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/cmake-build-debug/CMakeFiles/Compilador.dir/Token.cpp.obj"
+  "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/main.cpp" "D:/Documentos/Tecno/8vo Semestre/Lenguajes y automatas 2/Compilador/cmake-build-debug/CMakeFiles/Compilador.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
