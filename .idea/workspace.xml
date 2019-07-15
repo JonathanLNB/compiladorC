@@ -44,10 +44,6 @@
     <list default="true" id="9f7f449c-cd4b-4902-9c90-487d6d664821" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codigo.gsh" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo.gsh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compilador.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compilador.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,12 +61,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
+            <state relative-caret-position="-26514">
+              <caret line="292" column="5" selection-start-line="292" selection-start-column="5" selection-end-line="292" selection-end-column="5" />
               <folding>
-                <element signature="e#1078#1481#0" />
-                <element signature="e#1483#1844#0" />
-                <element signature="e#1846#2093#0" />
                 <element signature="e#2095#2238#0" />
                 <element signature="e#2380#2528#0" />
                 <element signature="e#2530#2695#0" />
@@ -79,9 +72,7 @@
                 <element signature="e#2997#3143#0" />
                 <element signature="e#3145#3284#0" />
                 <element signature="e#3286#3432#0" />
-                <element signature="e#3434#4237#0" />
                 <element signature="e#4239#4409#0" />
-                <element signature="e#4411#7937#0" />
               </folding>
             </state>
           </provider>
@@ -90,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Codigo.gsh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="24">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -247,12 +238,21 @@
       <workItem from="1562602998390" duration="762000" />
       <workItem from="1562689766100" duration="2365000" />
       <workItem from="1562776524337" duration="4307000" />
-      <workItem from="1563034761295" duration="950000" />
+      <workItem from="1563034761295" duration="1348000" />
+      <workItem from="1563210401701" duration="1050000" />
     </task>
+    <task id="LOCAL-00001" summary="Analizador Sintactico">
+      <created>1563037499178</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1563037499178</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55150000" />
+    <option name="totallyTimeSpent" value="56598000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -265,14 +265,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3161876" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3207262" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44444445" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31794873" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.63760686" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -280,7 +279,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="TeamCity" order="8" weight="0.32991454" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32991454" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32991454" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32991454" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32991454" />
       <window_info anchor="bottom" id="CMake" order="13" weight="0.32991454" />
@@ -317,6 +316,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Analizador Sintactico" />
+    <option name="LAST_COMMIT_MESSAGE" value="Analizador Sintactico" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -416,29 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
-          <folding>
-            <element signature="e#1078#1481#0" />
-            <element signature="e#1483#1844#0" />
-            <element signature="e#1846#2093#0" />
-            <element signature="e#2095#2238#0" />
-            <element signature="e#2380#2528#0" />
-            <element signature="e#2530#2695#0" />
-            <element signature="e#2697#2846#0" />
-            <element signature="e#2848#2995#0" />
-            <element signature="e#2997#3143#0" />
-            <element signature="e#3145#3284#0" />
-            <element signature="e#3286#3432#0" />
-            <element signature="e#3434#4237#0" />
-            <element signature="e#4239#4409#0" />
-            <element signature="e#4411#7937#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -453,10 +433,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26514">
+          <caret line="292" column="5" selection-start-line="292" selection-start-column="5" selection-end-line="292" selection-end-column="5" />
+          <folding>
+            <element signature="e#2095#2238#0" />
+            <element signature="e#2380#2528#0" />
+            <element signature="e#2530#2695#0" />
+            <element signature="e#2697#2846#0" />
+            <element signature="e#2848#2995#0" />
+            <element signature="e#2997#3143#0" />
+            <element signature="e#3145#3284#0" />
+            <element signature="e#3286#3432#0" />
+            <element signature="e#4239#4409#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Codigo.gsh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="24">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
         </state>
       </provider>
     </entry>
