@@ -3,44 +3,61 @@
 //
 #ifndef COMPILADOR_SEMANTICO_H
 #define COMPILADOR_SEMANTICO_H
+
 #include "Token.h"
 #include <boost/algorithm/string.hpp>
+
 class Semantico {
 public:
-    bool sameFamily(Token tk1, Token tk2){
+    bool sameFamily(Token tk1, Token tk2) {
         int tipoTk1, tipoTk2;
-        int familia1=0,familia2=0;
-        tipoTk1=tk1.getTipo();
-        tipoTk2=tk2.getTipo();
-        familia1=setFamily(tipoTk1);
-        familia2=setFamily(tipoTk2);
-        if(familia1==familia2)
+        int familia1 = 0, familia2 = 0;
+        tipoTk1 = tk1.getTipo();
+        tipoTk2 = tk2.getTipo();
+        familia1 = setFamily(tipoTk1);
+        familia2 = setFamily(tipoTk2);
+        if (familia1 == familia2)
             return true;
         return false;
     }
-    int setFamily(int type){
+
+    int setFamily(int type) {
         int family;
-        switch (type){
+        switch (type) {
             case 180:
             case 181:
-                family=1;
+                family = 1;
                 break;
             case 182:
-                family=2;
+                family = 2;
                 break;
         }
         return family;
     }
-    bool isFloat(Token identificador, Token asignado){
-        if(sameFamily(identificador,asignado)){
-            if(identificador.getTipo()!=181){
-                if(identificador.getTipo()!=asignado.getTipo())
+
+    bool isFloat(Token identificador, Token asignado) {
+        if (sameFamily(identificador, asignado)) {
+            if (identificador.getTipo() != 181) {
+                if (identificador.getTipo() != asignado.getTipo())
                     return true;
                 return false;
             }
             return true;
         }
         return false;
+    }
+
+    string getDataType(int id) {
+        switch (id) {
+            case 180:
+                return "Entero";
+            case 181:
+                return "Decimal";
+            case 182:
+                return "Cadena";
+            default:
+                return "";
+        }
     }
 };
 //para numeros 180 y 181

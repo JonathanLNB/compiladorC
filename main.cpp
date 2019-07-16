@@ -2,33 +2,11 @@
 #include <boost/algorithm/string.hpp>
 #include "Token.h"
 #include "Semantico.h"
+
 using namespace std;
 
-class Tokens {
-private:
-    string token;
-    int id;
-
-public:
-    void setToken(string tokenA) {
-        token = tokenA;
-    }
-
-    void setId(int idA) {
-        id = idA;
-    }
-
-    string getToken() {
-        return token;
-
-    }
-
-    int getId() {
-        return id;
-    }
-};
-
-int q, q0, x, y, id = 500, error = 0, errorS = 0, cantf;
+int q, q0, x, y, id = 500, error = 0, errorS = 0,
+        errorSema = 0, cantf;
 int valores[] = {180, 181, 182};
 int tiposDato[] = {150, 151, 154, 155};
 int tipoRetorno[] = {150, 151, 154, 155, 179};
@@ -39,12 +17,12 @@ int igualacion[] = {175, 137, 138};
 int logicos[] = {147, 148};
 int agrupacion[] = {125, 126, 127, 128, 129, 130};
 int matriz[201][97];
-vector<string> alfabeto, entrada, auxV;
-vector<Tokens> tokens;
+vector<string> alfabeto, auxV;
+vector<Token> tokens;
 vector<string> errores;
 string salida = "", texto = "", aux = "", erroresS = "";
 char ultimoC;
-int cont = 0, linea = 0;
+int cont = 0, contS = 0, linea = 0;
 bool bloquebool = false, sibool = false, forbool = false;
 
 string leer(int linea) {
@@ -210,7 +188,7 @@ void analisisLexico(int finales[]) {
             if (estado != -1) {
                 if (estado == 1 && q != 134) {
                     variable = true;
-                    Tokens token;
+                    Token token;
                     boost::replace_all(palabraAnt, " ", "");
                     boost::replace_all(palabraAnt, ";", "");
                     if (q == 182)
@@ -238,7 +216,7 @@ void analisisLexico(int finales[]) {
                         token.setId(q);
                     tokens.push_back(token);
                     if (ultimoC == ';') {
-                        Tokens token;
+                        Token token;
                         token.setId(134);
                         token.setToken(";");
                         tokens.push_back(token);
@@ -249,7 +227,7 @@ void analisisLexico(int finales[]) {
                     j--;
                 } else {
                     if (q == 134) {
-                        Tokens token;
+                        Token token;
                         token.setId(134);
                         token.setToken(";");
                         tokens.push_back(token);
@@ -282,10 +260,19 @@ void analisisLexico(int finales[]) {
     }
 }
 
+void analisisDelTipo();
 
 bool incrementar() {
     if (cont < tokens.size() - 1) {
         cont++;
+        return true;
+    }
+    return false;
+}
+
+bool incrementarS() {
+    if (contS < tokens.size() - 1) {
+        contS++;
         return true;
     }
     return false;
@@ -306,6 +293,12 @@ void analisisSintactico();
 bool consultarFin();
 
 void lectura();
+
+void analisisSemantico();
+
+int obtenerTipoDato(int id);
+
+void revisarPrecedencia();
 
 void analisisDelBloque() {
     linea++;
@@ -617,7 +610,6 @@ void declaracion() {
         errores.push_back(erroresS + "\n");
     }
 }
-
 
 void bloque() {
     if (incrementar()) {
@@ -1389,9 +1381,8 @@ int main() {
         }
     }
     texto = leerCodigo();
-    //texto = "entero jonas = \"100 y 2000\";\njonas = 200; $\n$";
     analisisLexico(finales);
-
+    analisisDelTipo();
     cout << "ID  |    Token    |  Tipo" << endl;
     cout << "--------------------------" << endl;
     for (int i = 0; i < tokens.size(); i++) {
@@ -1399,15 +1390,115 @@ int main() {
         cout << " | ";
         cout << tokens[i].getToken();
         cout << " | ";
+        cout << tokens[i].getTipo();
+        cout << " | ";
         cout << encontrarToken(tokens[i].getId()) << endl;
     }
     analisisSintactico();
+    analisisSemantico();
     if (errores.size() > 0) {
         for (int i = 0; i < errores.size(); i++) {
             cout << errores[i];
         }
     } else
-        cout << "El codigo no tiene errores lexicos, ni sintacticos\n";
+        cout << "El codigo no tiene errores lexicos, ni sintacticos, ni semanticos\n";
     return 0;
 }
 
+void analisisDelTipo() {
+    int tipo = -1;
+    do {
+        if (tokens[contS].getId() >= 500) {
+            if (tokens[contS].getTipo() == 0) {
+                if (tipo != -1)
+                    tokens[contS].setTipo(tipo);
+                else {
+                    for (int a = 0; a < tokens.size(); a++) {
+                        if (boost::iequals(tokens[a].getToken(), tokens[contS].getToken())) {
+                            tokens[contS].setTipo(tokens[a].getTipo());
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if (tokens[contS].getId() == 134 || tokens[contS].getId() == 127)
+            tipo = -1;
+        if (esTipoDato(tokens[contS].getId()))
+            tipo = obtenerTipoDato(tokens[contS].getId());
+        if (esValor(tokens[contS].getId()))
+            tokens[contS].setTipo(tokens[contS].getId());
+    } while (incrementarS());
+}
+
+void analisisSemantico() {
+    contS = 0;
+    Semantico semantico;
+    do {
+        if (tokens[contS].getId() == 175) {
+            if (tokens[contS - 1].getTipo() == 0 && tokens[contS - 1].getId() >= 500) {
+                errorSema++;
+                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+                errores.push_back(erroresS + "\n");
+            }
+            if (tokens[contS + 1].getTipo() == 0 && tokens[contS + 1].getId() >= 500) {
+                errorSema++;
+                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+                errores.push_back(erroresS + "\n");
+            }
+            if (semantico.sameFamily(tokens[contS - 1], tokens[contS + 1])) {
+                incrementarS();
+            } else {
+                if (semantico.sameFamily(tokens[contS - 1], tokens[contS + 1])) {
+                    incrementarS();
+                } else {
+                    errorSema++;
+                    erroresS =
+                            "Error Semantico: Datatype not match " +
+                            semantico.getDataType(tokens[contS - 1].getTipo()) +
+                            ":" + semantico.getDataType(tokens[contS + 1].getTipo());
+                    errores.push_back(erroresS + "\n");
+                }
+            }
+        }
+        if (esComparativo(tokens[contS].getId())) {
+            if (tokens[contS - 1].getTipo() == 0 && tokens[contS - 1].getId() >= 500) {
+                errorSema++;
+                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+                errores.push_back(erroresS + "\n");
+            }
+            if (tokens[contS + 1].getTipo() == 0 && tokens[contS + 1].getId() >= 500) {
+                errorSema++;
+                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+                errores.push_back(erroresS + "\n");
+            }
+            if (semantico.sameFamily(tokens[contS - 1], tokens[contS + 1])) {
+                incrementarS();
+            } else {
+                errorSema++;
+                erroresS =
+                        "Error Semantico: Datatype not match " +
+                        semantico.getDataType(tokens[contS - 1].getTipo()) +
+                        ":" + semantico.getDataType(tokens[contS + 1].getTipo());
+                errores.push_back(erroresS + "\n");
+            }
+        }
+//        if(esAritmetico())
+    } while (incrementarS());
+}
+
+int obtenerTipoDato(int id) {
+    int tipo;
+    switch (id) {
+        case 155:
+            tipo = 180;
+            break;
+        case 154:
+            tipo = 181;
+            break;
+        case 151:
+            tipo = 182;
+            break;
+    }
+    return tipo;
+}

@@ -44,6 +44,11 @@
     <list default="true" id="9f7f449c-cd4b-4902-9c90-487d6d664821" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codigo.gsh" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo.gsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Semantico.h" beforeDir="false" afterPath="$PROJECT_DIR$/Semantico.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Token.h" beforeDir="false" afterPath="$PROJECT_DIR$/Token.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compilador.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compilador.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,31 +63,57 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26514">
-              <caret line="292" column="5" selection-start-line="292" selection-start-column="5" selection-end-line="292" selection-end-column="5" />
+            <state relative-caret-position="110">
+              <caret line="1428" column="55" selection-start-line="1428" selection-start-column="55" selection-end-line="1428" selection-end-column="55" />
               <folding>
-                <element signature="e#2095#2238#0" />
-                <element signature="e#2380#2528#0" />
-                <element signature="e#2530#2695#0" />
-                <element signature="e#2697#2846#0" />
-                <element signature="e#2848#2995#0" />
-                <element signature="e#2997#3143#0" />
-                <element signature="e#3145#3284#0" />
-                <element signature="e#3286#3432#0" />
-                <element signature="e#4239#4409#0" />
+                <element signature="e#1119#1522#0" />
+                <element signature="e#1524#1885#0" />
+                <element signature="e#1887#2134#0" />
+                <element signature="e#2136#2279#0" />
+                <element signature="e#2281#2419#0" />
+                <element signature="e#2421#2569#0" />
+                <element signature="e#2571#2736#0" />
+                <element signature="e#2738#2887#0" />
+                <element signature="e#2889#3036#0" />
+                <element signature="e#3038#3184#0" />
+                <element signature="e#3186#3325#0" />
+                <element signature="e#3327#3473#0" />
+                <element signature="e#3475#4278#0" />
+                <element signature="e#4280#4450#0" />
+                <element signature="e#4452#7978#0" />
+                <element signature="e#7981#8100#0" />
+                <element signature="e#7813#7932#0" />
+                <element signature="e#8257#9002#0" />
+                <element signature="e#9004#9828#0" />
+                <element signature="e#9830#12419#0" />
+                <element signature="e#12421#13188#0" />
+                <element signature="e#22874#25364#0" />
+                <element signature="e#25366#28022#0" />
+                <element signature="e#28024#32390#0" />
+                <element signature="e#32392#65687#0" />
+                <element signature="e#66295#66932#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Semantico.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codigo.gsh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+            <state relative-caret-position="144">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -99,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Reglas.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+            <state relative-caret-position="48">
+              <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -129,6 +160,11 @@
       <find>si</find>
       <find>analisis</find>
       <find>analisisDelSi</find>
+      <find>122</find>
+      <find>200</find>
+      <find>180</find>
+      <find>120</find>
+      <find>increme</find>
     </findStrings>
     <replaceStrings>
       <replace>bloque()</replace>
@@ -142,8 +178,10 @@
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Reglas.txt" />
-        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Token.h" />
+        <option value="$PROJECT_DIR$/Semantico.h" />
         <option value="$PROJECT_DIR$/Codigo.gsh" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
@@ -174,11 +212,6 @@
             <path>
               <item name="Compilador" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="Compilador" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
             </path>
           </expand>
           <select />
@@ -239,7 +272,8 @@
       <workItem from="1562689766100" duration="2365000" />
       <workItem from="1562776524337" duration="4307000" />
       <workItem from="1563034761295" duration="1348000" />
-      <workItem from="1563210401701" duration="1050000" />
+      <workItem from="1563210401701" duration="2878000" />
+      <workItem from="1563293963807" duration="7492000" />
     </task>
     <task id="LOCAL-00001" summary="Analizador Sintactico">
       <created>1563037499178</created>
@@ -248,11 +282,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563037499178</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Decimales">
+      <created>1563213063010</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563213063011</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56598000" />
+    <option name="totallyTimeSpent" value="65918000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -265,21 +306,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3207262" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3260212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31794873" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.63760686" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32649574" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.62222224" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32991454" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="TeamCity" order="8" weight="0.32991454" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32991454" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32991454" />
+      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.32991454" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32991454" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32991454" />
       <window_info anchor="bottom" id="CMake" order="13" weight="0.32991454" />
@@ -319,35 +361,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Analizador Sintactico" />
-    <option name="LAST_COMMIT_MESSAGE" value="Analizador Sintactico" />
+    <MESSAGE value="Decimales" />
+    <option name="LAST_COMMIT_MESSAGE" value="Decimales" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>680</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>534</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>263</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>800</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>896</line>
-          <option name="timeStamp" value="26" />
+          <line>1415</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -355,14 +378,34 @@
       <configuration name="CMakeRunConfiguration">
         <watch expression="cont" language="ObjectiveC" />
         <watch expression="q" language="ObjectiveC" />
-        <watch expression="palabra" language="ObjectiveC" />
-        <watch expression="palabraAnt" language="ObjectiveC" />
         <watch expression="tokens" language="ObjectiveC" />
+        <watch expression="tipo" language="ObjectiveC" />
+        <watch expression="contS" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>contS</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tipo</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>matriz</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>index</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>tokens</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -412,13 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/stl_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="933" selection-start-line="933" selection-end-line="933" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -428,33 +464,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Reglas.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+        <state relative-caret-position="48">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/Token.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Token.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26514">
-          <caret line="292" column="5" selection-start-line="292" selection-start-column="5" selection-end-line="292" selection-end-column="5" />
-          <folding>
-            <element signature="e#2095#2238#0" />
-            <element signature="e#2380#2528#0" />
-            <element signature="e#2530#2695#0" />
-            <element signature="e#2697#2846#0" />
-            <element signature="e#2848#2995#0" />
-            <element signature="e#2997#3143#0" />
-            <element signature="e#3145#3284#0" />
-            <element signature="e#3286#3432#0" />
-            <element signature="e#4239#4409#0" />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semantico.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="933" selection-start-line="933" selection-end-line="933" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Codigo.gsh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        <state relative-caret-position="144">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semantico.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="1428" column="55" selection-start-line="1428" selection-start-column="55" selection-end-line="1428" selection-end-column="55" />
+          <folding>
+            <element signature="e#1119#1522#0" />
+            <element signature="e#1524#1885#0" />
+            <element signature="e#1887#2134#0" />
+            <element signature="e#2136#2279#0" />
+            <element signature="e#2281#2419#0" />
+            <element signature="e#2421#2569#0" />
+            <element signature="e#2571#2736#0" />
+            <element signature="e#2738#2887#0" />
+            <element signature="e#2889#3036#0" />
+            <element signature="e#3038#3184#0" />
+            <element signature="e#3186#3325#0" />
+            <element signature="e#3327#3473#0" />
+            <element signature="e#3475#4278#0" />
+            <element signature="e#4280#4450#0" />
+            <element signature="e#4452#7978#0" />
+            <element signature="e#7981#8100#0" />
+            <element signature="e#7813#7932#0" />
+            <element signature="e#8257#9002#0" />
+            <element signature="e#9004#9828#0" />
+            <element signature="e#9830#12419#0" />
+            <element signature="e#12421#13188#0" />
+            <element signature="e#22874#25364#0" />
+            <element signature="e#25366#28022#0" />
+            <element signature="e#28024#32390#0" />
+            <element signature="e#32392#65687#0" />
+            <element signature="e#66295#66932#0" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,7 +9,7 @@ class Token {
 private:
     string token;
     int id;
-    int tipo;
+    int tipo = 0;
 public:
     void setToken(string tokenA) {
         token = tokenA;
