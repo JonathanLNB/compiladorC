@@ -3,6 +3,8 @@
 #include "Token.h"
 #include "Semantico.h"
 
+//ya quedooooo 
+
 using namespace std;
 
 int q, q0, x, y, id = 500, error = 0, errorS = 0,
@@ -1483,8 +1485,60 @@ void analisisSemantico() {
                 errores.push_back(erroresS + "\n");
             }
         }
-//        if(esAritmetico())
-    } while (incrementarS());
+        if (tokens[contS].getId()==175){
+    if (tokens[contS-1].getTipo()==0 && tokens [contS-1].getId>= 500){
+          errorSema++;
+          erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+   errores.push_back(erroresS + "\n");
+}	else { 
+        int contA = contS-1;
+          if (tokens[contA].getTipo()==182 ){
+          	if (tokens[contS+1].getTipo()!=182){
+
+   							errorSema++;
+                    erroresS =
+                            "Error Semantico: Datatype not match " +
+                            semantico.getDataType(tokens[contA].getTipo()) +
+                            ":" + semantico.getDataType(tokens[contS].getTipo());
+                    errores.push_back(erroresS + "\n");
+
+          	}
+
+          }else{
+         while(incrementaS() && tokens [contS]!=134){
+         	if (semantico.isFloat(tokens [contA],tokens[contS]){
+               if (!semantico.sameFamily (tokens [contA],tokens[contS])){
+               	errorSema++;
+                    erroresS =
+                            "Error Semantico: Datatype not match " +
+                            semantico.getDataType(tokens[contA].getTipo()) +
+                            ":" + semantico.getDataType(tokens[contS].getTipo());
+                    errores.push_back(erroresS + "\n");
+               }
+              
+    		}else { 
+    			   if (tokens[contA].getTipo()==180){
+ 						if (tokens[contA].getTipo()!=tokens [contS].getTipo()){
+
+   							errorSema++;
+                    erroresS =
+                            "Error Semantico: Datatype not match " +
+                            semantico.getDataType(tokens[contA].getTipo()) +
+                            ":" + semantico.getDataType(tokens[contS].getTipo());
+                    errores.push_back(erroresS + "\n");
+    					}
+    			    }
+    			  
+    		}
+    		 
+
+          }
+        }
+     }
+    
+  
+}
+      } while (incrementarS());
 }
 
 int obtenerTipoDato(int id) {
