@@ -486,10 +486,62 @@ void declaracion() {
                                     if (tokens[cont].getId() == 131)
                                         declaracion();
                                     else {
-                                        errorS++;
-                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
-                                        errores.push_back(erroresS + "\n");
-                                        return;
+                                        if (esAritmetico(tokens[cont].getId())) {
+                                            do {
+                                                if (incrementar()) {
+                                                    if (tokens[cont].getId() >= 500 || esValor(tokens[cont].getId())) {
+                                                        if (incrementar()) {
+                                                            if (!esAritmetico(tokens[cont].getId())) {
+                                                                if (tokens[cont].getId() == 134) {
+                                                                    if (incrementar())
+                                                                        analisisSintactico();
+                                                                    return;
+                                                                } else {
+                                                                    errorS++;
+                                                                    erroresS = "Error de sintaxis en la linea: " +
+                                                                               to_string(linea);
+                                                                    errores.push_back(erroresS + "\n");
+                                                                    return;
+                                                                }
+                                                            }
+                                                        } else {
+                                                            errorS++;
+                                                            erroresS = "Error de sintaxis en la linea: " +
+                                                                       to_string(linea);
+                                                            errores.push_back(erroresS + "\n");
+                                                            return;
+                                                        }
+                                                    } else {
+                                                        errorS++;
+                                                        erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                        errores.push_back(erroresS + "\n");
+                                                        return;
+                                                    }
+                                                } else {
+                                                    errorS++;
+                                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                    errores.push_back(erroresS + "\n");
+                                                    return;
+                                                }
+                                            } while (tokens[cont].getId() != 134 && tokens[cont].getId() != 131);
+                                            if (tokens[cont].getId() == 134) {
+                                                if (consultarFin()) return;
+                                            } else {
+                                                if (tokens[cont].getId() == 131)
+                                                    declaracion();
+                                                else {
+                                                    errorS++;
+                                                    erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                                    errores.push_back(erroresS + "\n");
+                                                    return;
+                                                }
+                                            }
+                                        } else {
+                                            errorS++;
+                                            erroresS = "Error de sintaxis en la linea: " + to_string(linea);
+                                            errores.push_back(erroresS + "\n");
+                                            return;
+                                        }
                                     }
                                 }
                             } else {
@@ -1437,30 +1489,14 @@ void analisisSemantico() {
     contS = 0;
     Semantico semantico;
     do {
-        if (tokens[contS].getId() == 175) {
-            if (tokens[contS - 1].getTipo() == 0 && tokens[contS - 1].getId() >= 500) {
-                errorSema++;
-                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+        if (tokens[contS].getId() == 163) {
+            incrementarS();
+            incrementarS();
+            if (tokens[contS].getTipo() != 182) {
+                "Error Semantico: Datatype not match " +
+                semantico.getDataType(tokens[contS - 1].getTipo()) +
+                ":" + semantico.getDataType(182);
                 errores.push_back(erroresS + "\n");
-            }
-            if (tokens[contS + 1].getTipo() == 0 && tokens[contS + 1].getId() >= 500) {
-                errorSema++;
-                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
-                errores.push_back(erroresS + "\n");
-            }
-            if (semantico.sameFamily(tokens[contS - 1], tokens[contS + 1])) {
-                incrementarS();
-            } else {
-                if (semantico.sameFamily(tokens[contS - 1], tokens[contS + 1])) {
-                    incrementarS();
-                } else {
-                    errorSema++;
-                    erroresS =
-                            "Error Semantico: Datatype not match " +
-                            semantico.getDataType(tokens[contS - 1].getTipo()) +
-                            ":" + semantico.getDataType(tokens[contS + 1].getTipo());
-                    errores.push_back(erroresS + "\n");
-                }
             }
         }
         if (esComparativo(tokens[contS].getId())) {
@@ -1485,60 +1521,65 @@ void analisisSemantico() {
                 errores.push_back(erroresS + "\n");
             }
         }
-        if (tokens[contS].getId()==175){
-    if (tokens[contS-1].getTipo()==0 && tokens [contS-1].getId>= 500){
-          errorSema++;
-          erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
-   errores.push_back(erroresS + "\n");
-}	else { 
-        int contA = contS-1;
-          if (tokens[contA].getTipo()==182 ){
-          	if (tokens[contS+1].getTipo()!=182){
+        if (tokens[contS].getId() == 175) {
+            if (tokens[contS + 1].getTipo() == 0 && tokens[contS + 1].getId() >= 500) {
+                errorSema++;
+                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+                errores.push_back(erroresS + "\n");
+            }
+            if (tokens[contS - 1].getTipo() == 0 && tokens[contS - 1].getId() >= 500) {
+                errorSema++;
+                erroresS = "Error Semantico: Unexpected " + tokens[contS - 1].getToken();
+                errores.push_back(erroresS + "\n");
+            } else {
+                int contA = contS - 1;
+                if (tokens[contA].getTipo() == 182) {
+                    if (tokens[contS + 1].getTipo() != 182) {
+                        errorSema++;
+                        erroresS = "Error Semantico: Datatype not match " +
+                                   semantico.getDataType(tokens[contA].getTipo()) +
+                                   ":" + semantico.getDataType(tokens[contS].getTipo());
+                        errores.push_back(erroresS + "\n");
 
-   							errorSema++;
-                    erroresS =
-                            "Error Semantico: Datatype not match " +
-                            semantico.getDataType(tokens[contA].getTipo()) +
-                            ":" + semantico.getDataType(tokens[contS].getTipo());
-                    errores.push_back(erroresS + "\n");
+                    }
+                } else {
+                    while (incrementarS() && tokens[contS].getId() != 134 && tokens[contS].getId() != 131) {
+                        if (!esAritmetico(tokens[contS].getId())) {
+                            if (semantico.isFloat(tokens[contA], tokens[contS])) {
+                                if (!semantico.sameFamily(tokens[contA], tokens[contS])) {
+                                    errorSema++;
+                                    erroresS =
+                                            "Error Semantico: Datatype not match " +
+                                            semantico.getDataType(tokens[contA].getTipo()) +
+                                            ":" + semantico.getDataType(tokens[contS].getTipo());
+                                    errores.push_back(erroresS + "\n");
+                                }
 
-          	}
+                            } else {
+                                if (tokens[contA].getTipo() == 180) {
+                                    if (tokens[contA].getTipo() != tokens[contS].getTipo()) {
 
-          }else{
-         while(incrementaS() && tokens [contS]!=134){
-         	if (semantico.isFloat(tokens [contA],tokens[contS]){
-               if (!semantico.sameFamily (tokens [contA],tokens[contS])){
-               	errorSema++;
-                    erroresS =
-                            "Error Semantico: Datatype not match " +
-                            semantico.getDataType(tokens[contA].getTipo()) +
-                            ":" + semantico.getDataType(tokens[contS].getTipo());
-                    errores.push_back(erroresS + "\n");
-               }
-              
-    		}else { 
-    			   if (tokens[contA].getTipo()==180){
- 						if (tokens[contA].getTipo()!=tokens [contS].getTipo()){
+                                        errorSema++;
+                                        erroresS =
+                                                "Error Semantico: Datatype not match " +
+                                                semantico.getDataType(tokens[contA].getTipo()) +
+                                                ":" + semantico.getDataType(tokens[contS].getTipo());
+                                        errores.push_back(erroresS + "\n");
+                                    }
+                                }
 
-   							errorSema++;
-                    erroresS =
-                            "Error Semantico: Datatype not match " +
-                            semantico.getDataType(tokens[contA].getTipo()) +
-                            ":" + semantico.getDataType(tokens[contS].getTipo());
-                    errores.push_back(erroresS + "\n");
-    					}
-    			    }
-    			  
-    		}
-    		 
+                            }
 
-          }
+                        }
+                    }
+                }
+            }
         }
-     }
-    
-  
-}
-      } while (incrementarS());
+    } while (
+
+            incrementarS()
+
+            );
 }
 
 int obtenerTipoDato(int id) {

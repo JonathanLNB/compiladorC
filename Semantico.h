@@ -37,12 +37,12 @@ public:
 
     bool isFloat(Token identificador, Token asignado) {
         if (sameFamily(identificador, asignado)) {
-            if (identificador.getTipo() != 181) {
+            if (identificador.getTipo() == 181) {
                 if (identificador.getTipo() != asignado.getTipo())
                     return true;
                 return false;
             }
-            return true;
+            return false;
         }
         return false;
     }

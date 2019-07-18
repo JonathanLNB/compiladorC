@@ -1,5 +1,5 @@
+entero prro = 100.122 + 100 + 200 - 300;
 entero valor = 100 , hola;
-decimal prro = 100.122;
 cadena kk = "Hola";
 for ( entero i = 0 , i < 100 , i ++ ){
 
