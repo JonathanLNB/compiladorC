@@ -138,6 +138,63 @@ bool esAgrupacion(int ID) {
     return false;
 }
 
+int prioridad(char op) {
+    switch (op) {
+        case '^':
+            return 3;
+        case '*':
+        case '/':
+            return 2;
+        case '+':
+        case '-':
+            return 1;
+        case ')':
+            return -1;
+        default:
+            return 0;
+    }
+}
+
+string convertir(string in) {
+    stack<char> pila;
+    string posf = "";
+    for (int i = 0; i < in.size(); i++) {
+        switch (in[i]) {
+            case '(':
+                pila.push('(');
+                break;
+            case ')':
+                while (!pila.empty() && pila.top() != '(') {
+                    posf += string(1, pila.top()) + " ";
+                    pila.pop();
+                }
+                pila.pop();
+                break;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+                while (!pila.empty() && prioridad(in[i]) <= prioridad(pila.top())) {
+                    posf += string(1, pila.top()) + " ";
+                    pila.pop();
+                }
+                pila.push(in[i]);
+                break;
+            default:
+                while (isdigit(in[i]) || in[i] == '.')
+                    posf += string(1, in[i++]);
+                posf += " ";
+                i--;
+        }
+    }
+    while (!pila.empty()) {
+        posf += string(1, pila.top()) + " ";
+        pila.pop();
+    }
+    return posf;
+}
+
 string encontrarToken(int ID) {
     if (esTipoDato(ID))
         return "Tipo de dato";
@@ -1554,10 +1611,16 @@ void analisisSemantico() {
 
                     }
                 } else {
+                    string operacion = "";
+                    bool op = true;
                     while (incrementarS() && tokens[contS].getId() != 134 && tokens[contS].getId() != 131) {
+                        operacion += tokens[contS].getToken();
+                        if (tokens[contS].getId() >= 500)
+                            op = false;
                         if (!esAritmetico(tokens[contS].getId())) {
                             if (semantico.isFloat(tokens[contA], tokens[contS])) {
                                 if (!semantico.sameFamily(tokens[contA], tokens[contS])) {
+                                    op = false;
                                     errorSema++;
                                     erroresS =
                                             "Error Semantico: Datatype not match " +
@@ -1565,11 +1628,10 @@ void analisisSemantico() {
                                             ":" + semantico.getDataType(tokens[contS].getTipo());
                                     errores.push_back(erroresS + "\n");
                                 }
-
                             } else {
                                 if (tokens[contA].getTipo() == 180) {
                                     if (tokens[contA].getTipo() != tokens[contS].getTipo()) {
-
+                                        op = false;
                                         errorSema++;
                                         erroresS =
                                                 "Error Semantico: Datatype not match " +
@@ -1578,19 +1640,15 @@ void analisisSemantico() {
                                         errores.push_back(erroresS + "\n");
                                     }
                                 }
-
                             }
-
                         }
                     }
+                    if (op)
+                        cout << "Notacion Polaca: " << convertir(operacion) << endl;
                 }
             }
         }
-    } while (
-
-            incrementarS()
-
-            );
+    } while (incrementarS());
 }
 
 int obtenerTipoDato(int id) {
