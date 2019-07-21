@@ -481,7 +481,10 @@ void declaracion() {
                         if (esValor(tokens[cont].getId())) {
                             if (incrementar()) {
                                 if (tokens[cont].getId() == 134) {
-                                    if (consultarFin()) return;
+                                    if (consultarFin()) {
+                                        analisisSintactico();
+                                    }
+                                    return;
                                 } else {
                                     if (tokens[cont].getId() == 131)
                                         declaracion();
@@ -851,7 +854,7 @@ void si() {
                 if (incrementar()) {
                     if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
                         if (incrementar()) {
-                            if (esComparativo(tokens[cont].getId())) {
+                            if (esComparativo(tokens[cont].getId()) && tokens[cont].getId() != 175) {
                                 if (incrementar()) {
                                     if (esValor(tokens[cont].getId()) || tokens[cont].getId() >= 500) {
                                         if (!incrementar()) {
@@ -1448,14 +1451,22 @@ int main() {
         cout << " | ";
         cout << encontrarToken(tokens[i].getId()) << endl;
     }
+    cont = 0;
     analisisSintactico();
-    analisisSemantico();
     if (errores.size() > 0) {
         for (int i = 0; i < errores.size(); i++) {
             cout << errores[i];
         }
-    } else
-        cout << "El codigo no tiene errores lexicos, ni sintacticos, ni semanticos\n";
+    } else {
+        analisisSemantico();
+        if (errores.size() > 0) {
+            for (int i = 0; i < errores.size(); i++) {
+                cout << errores[i];
+            }
+        } else {
+            cout << "El codigo no tiene errores lexicos, ni sintacticos, ni semanticos\n";
+        }
+    }
     return 0;
 }
 
